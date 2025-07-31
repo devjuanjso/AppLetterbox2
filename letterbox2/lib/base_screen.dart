@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:letterbox2/custom_drawer.dart';
 
@@ -9,14 +10,14 @@ class BaseScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.end, // Alinha à direita
-            children: [Text('Eu Amo Séries 🎬')],
-          ),
+      appBar: AppBar(
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.end, // Alinha à direita
+          children: [Text('Eu Amo Séries 🎬')],
         ),
-        drawer: CustomDrawer(),
-        body: child,
-      );
+      ),
+      drawer: CustomDrawer(),
+      body: child,
+    );
   }
 }

@@ -16,8 +16,8 @@ class _TvShowSearchScreenState extends State<TvShowSearchScreen> {
   final _controller = TextEditingController();
 
   late Future<List<TvShow>>? searchResults;
-
   bool onSubmit = false;
+
   void submit() {
     if (_formKey.currentState!.validate()) {
       final tvShowModel = context.read<TvShowModel>();
@@ -94,7 +94,7 @@ class _TvShowSearchScreenState extends State<TvShowSearchScreen> {
                               spacing: 32,
                               children: [
                                 Text(
-                                  'Erro: ${snapshot.error}',
+                                  'ERRO, ${snapshot.error}',
                                   style: TextStyle(fontSize: 24),
                                 ),
                                 ElevatedButton(
@@ -105,7 +105,8 @@ class _TvShowSearchScreenState extends State<TvShowSearchScreen> {
                             ),
                           ),
                         );
-                      } else if(onSubmit && (!snapshot.hasData || snapshot.data!.isEmpty)) {
+                      } else if (onSubmit &&
+                          (!snapshot.hasData || snapshot.data!.isEmpty)) {
                         return Center(
                           child: Container(
                             padding: EdgeInsets.all(32),
@@ -125,18 +126,22 @@ class _TvShowSearchScreenState extends State<TvShowSearchScreen> {
                           ),
                         );
                       } else {
-                        return Column(children: [
-                          Text(
-                            '${snapshot.data!.length} séries encontradas!',
-                            style: TextStyle(
-                              fontSize: 18,
-                              color: Theme.of(context).colorScheme.primary,
-                              fontWeight: FontWeight.bold
-                              )
-                          ),
-                          SizedBox(height: 16,),
-                          Expanded(child: TvShowGrid(tvShows: snapshot.data!),)
-                        ],);
+                        return Column(
+                          children: [
+                            Text(
+                              '${snapshot.data!.length} séries econtradas!',
+                              style: TextStyle(
+                                fontSize: 18,
+                                color: Theme.of(context).colorScheme.primary,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            SizedBox(height: 16),
+                            Expanded(
+                              child: TvShowGrid(tvShows: snapshot.data!),
+                            ),
+                          ],
+                        );
                       }
                     },
                   ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:letterbox2/base_screen.dart';
+import 'package:letterbox2/fav_tv_show_screen.dart';
 import 'package:letterbox2/my_theme_model.dart';
 import 'package:letterbox2/tv_show_model.dart';
 import 'package:letterbox2/tv_show_screen.dart';
@@ -25,7 +26,14 @@ final GoRouter _router = GoRouter(
     ShellRoute(
       builder: (context, state, child) => BaseScreen(child: child),
       routes: [
-        GoRoute(path: '/', builder: (context, state) => TvShowScreen()),
+        GoRoute(path: '/', builder: (context, state) => FavTvShowScreen()),
+        GoRoute(
+          path: '/tvshow/:id',
+          builder: (context, state) {
+            final id = int.parse(state.pathParameters['id']!);
+            return TvShowScreen(id: id);
+          },
+        ),
         GoRoute(
           path: '/search',
           builder: (context, state) => TvShowSearchScreen(),
